@@ -1,0 +1,65 @@
+--Crear un migración de creación
+php artisan migrate:make create_nombretabla_table --create=nombretabla
+
+--Crear migracion de alter
+php artisan migrate:make add_nombrecampo_to_nombretabla --table=nombretabla
+
+--Correr migraciones
+php artisan migrate
+
+--Deshacer migraciones
+php artisan migrate:rollback
+
+--Empaquetado aplicación
+php artisan empaquetar
+
+--Insertar los Seeds
+php artisan db:seed 
+
+--Rollback de migraciones y se vuelve a correr con los seeds
+php artisan migrate:refresh --seed --force
+
+--Correr un seed especifico
+php artisan db:seed --class=TipoViviendaTableSeeder
+
+--
+php artisan optimize
+
+-- Genera la documentacion en los modelos
+php artisan ide-helper:models
+
+-- Muestras todas las rutas 
+php artisan routes
+
+-- Genera las rutas para permisologia luego de modificar el metoro getRoutes() del vendor/laravel
+-- ver archivo Generar Rutas Array.txt
+php artisan routes >> rutas.txt
+
+-- Actuliza las dependencias
+composer update
+
+-- Instala las dependencias mas rapidamente
+composer install
+
+-- Cargar las clases
+composer dumpautoload
+
+--
+composer self-update
+
+-- Limpiar el cache
+php artisan cache:clear
+
+*********************************************************GIT****************************************************
+
+git branch --set-upstream-to=origin/develop develop
+
+-- Sube los archivos al servidor
+git push 
+
+-- borra cualquier actualización que se refleje en el composer
+git reset -hard
+
+-- Descarga los archivos a ser actualizados
+git pull
+
