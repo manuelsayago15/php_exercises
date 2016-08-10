@@ -1,0 +1,30 @@
+<html>
+
+    <head>
+		<title>Curso de PHP - ejemplo de formulario | www.aprender-informatica.com</title>
+    </head>
+
+	<body>
+
+		<!-- También habría que validar en el ordenador del usuario mediante JavaScript -->
+
+		<form name="frmPrueba" method="post" action="03_form3.php" >	
+
+			Nombre(*):    <input type="text" name="txtNombre"	 id="txt1" />
+			Apellidos(*): <input type="text" name="txtApellidos" id="txt2" />
+			Edad:		  <input type="text" name="txtEdad"		 id="txt3" size="3" maxlength="2" /><p/>
+
+			Nivel de inglés: 
+			<input type="radio" name="radIngles" value="BAJO" /> Bajo
+			<input type="radio" name="radIngles" value="MEDIO" /> Medio
+			<input type="radio" name="radIngles" value="ALTO" /> Alto<p/>
+
+			<input type="checkbox" name="chkCoche" value="1" /> ¿Coche?<p/>
+
+			<input type="submit" name="btnEnviar" value="Enviar Formulario" />
+			
+		</form>
+
+	</body>
+
+</html>
