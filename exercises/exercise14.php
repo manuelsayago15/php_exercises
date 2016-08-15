@@ -56,7 +56,7 @@
 			$errors = array();
 			
 			if (empty($_POST['grade1']) || empty($_POST['grade2']) || empty($_POST['grade3'])) {
-				echo "Los campos no pueden estar vacíos.";
+				echo "Ningún campo puede estar vacío. Complete todos los campos.";
 			}else{
 
 				if ($grade1<0 || $grade1>=21) {
@@ -74,7 +74,7 @@
 				}
 			}
 
-			if ($errors=="") {
+			if (count($errors)==0) {
 				
 				$prom = ($grade1+$grade2+$grade3)/3;
 
