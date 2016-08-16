@@ -24,5 +24,17 @@
 				<input type="submit" name="button" id="sending" value="Send">
 			</div>
 		</form>
+
+		<?php
+			if (isset($_POST['button'])) {
+				# code...
+			}
+
+
+
+		?>
+
+
+
 	</body>
 </html>

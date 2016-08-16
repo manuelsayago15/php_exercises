@@ -1,3 +1,4 @@
+<!-- 14.	Determinar si un alumno aprueba o reprueba un curso, sabiendo que aprobara si el promedio de tres calificaciones es mayor o igual a 30. Mostrar un mensaje indicando Aprobado o Reprobado Validar las 3 notas antes de realizar los cálculos, muestre un mensaje de error en caso de que alguna nota no sea correcta. -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,15 +11,15 @@
 		<form name="exer14" action="#" method="post" id="constant" name="constant">
 			<div>
 				<label for="text">Grade 1: </label>
-				<input type="number" name="grade1" placeholder="Type grade 1" >
+				<input type="number" name="grade1" placeholder="Type grade 1"  required>
 			</div>
 			<div>
 				<label for="text">Grade 2: </label>
-				<input type="number" name="grade2" placeholder="Type grade 2" >
+				<input type="number" name="grade2" placeholder="Type grade 2"  required>
 			</div>
 			<div>
 				<label for="text">Grade 3: </label>
-				<input type="number" name="grade3" placeholder="Type grade 3" >
+				<input type="number" name="grade3" placeholder="Type grade 3"  required>
 			</div>
 			<div>
 				<input type="submit" name="button" id="sending" value="Send">
@@ -58,6 +59,19 @@
 			
 			if (empty($_POST['grade1']) || empty($_POST['grade2']) || empty($_POST['grade3'])) {
 				echo "Ningún campo puede estar vacío. Complete todos los campos.";
+
+			}elseif (is_numeric($grade1)==false || is_numeric($grade2)==false || is_numeric($grade3)==false) {
+
+				if (is_numeric($grade1)==false) {
+					echo "Error! Nota inválida: '$grade1' El campo para la nota 1 contiene letras. Ingrese una nota entre 0-20." . "<br>";					
+				}
+				if (is_numeric($grade2)==false) {
+					echo "Error! Nota inválida: '$grade2' El campo para la nota 2 contiene letras. Ingrese una nota entre 0-20." . "<br>";					
+				}
+				if (is_numeric($grade3)==false) {
+					echo "Error! Nota inválida: '$grade3' El campo para la nota 3 contiene letras. Ingrese una nota entre 0-20." . "<br>";					
+				}
+
 			}elseif ($grade1<0 || $grade1>20 || $grade2<0 || $grade2>20 || $grade3<0 || $grade3>20) {
 
 				if ($grade1<0 || $grade1>20){
@@ -84,8 +98,6 @@
 			}else{
 				echo "Ingrese las notas correctamente";
 			}
-				
-			
 		}
 		?>
 	</body>
