@@ -47,35 +47,31 @@
 			?>
 			*/
 			
-				
-
 		if(isset($_POST['button'])){
 			$grade1 = $_POST['grade1'];
 			$grade2 = $_POST['grade2'];
 			$grade3 = $_POST['grade3'];
-			$errors = array();
+			$count = 0;
+			$errors = array("Error1" => "Error! la nota $grade1 es incorrecta. Ingrese una nota 			válida entre 0-20.",
+							"Error2" => "Error! la nota $grade2 es incorrecta. Ingrese una nota válida entre 0-20.",
+							"Error3" => "Error! la nota $grade3 es incorrecta. Ingrese una nota válida entre 0-20.");
 			
 			if (empty($_POST['grade1']) || empty($_POST['grade2']) || empty($_POST['grade3'])) {
 				echo "Ningún campo puede estar vacío. Complete todos los campos.";
-			}else{
+			}elseif ($grade1<0 || $grade1>20 || $grade2<0 || $grade2>20 || $grade3<0 || $grade3>20) {
 
-				if ($grade1<0 || $grade1>=21) {
-					$errors[] = "Error! la nota $grade1 es incorrecta. Ingrese una nota válida entre 0-20." . "<br>";
-					echo $errors[0];
+				if ($grade1<0 || $grade1>20){
+					echo $errors["Error1"] . "<br>";
+				}
+				if ($grade2<0 || $grade2>20){
+					echo $errors["Error2"] . "<br>";
+				}
+				if ($grade3<0 || $grade3>20){
+					echo $errors["Error3"] . "<br>";
+				}
 					//print_r($errors);
-				}
-				if ($grade2<0 || $grade2>=21) {
-					$errors[] = "Error! la nota $grade2 es incorrecta. Ingrese una nota válida entre 0-20." . "<br>";
-					echo $errors[1];
-				}
-				if ($grade3<0 || $grade3>=21) {
-					$errors[] = "Error! la nota $grade3 es incorrecta. Ingrese una nota válida entre 0-20." . "<br>";
-					echo $errors[2];
-				}
-			}
+			}elseif (($grade1>=0 || $grade1<=20) && ($grade2>=0 || $grade2<=20) && ($grade3>=0 || $grade3<=20)) {
 
-			if (count($errors)==0) {
-				
 				$prom = ($grade1+$grade2+$grade3)/3;
 
 				if ($prom>=15) {
@@ -85,16 +81,12 @@
 					echo "El promedio del alumno es " . $prom . "<br>";
 					echo "El alumno ha reprobado.";
 				}
+			}else{
+				echo "Ingrese las notas correctamente";
 			}
-
-		
+				
 			
 		}
-			
-
-			
-			
-
 		?>
 	</body>
 </html>
