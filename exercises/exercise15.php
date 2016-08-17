@@ -55,11 +55,11 @@
 				}else{
 					if ($hours<=40) {
 						$salary = $hours*16;
-						echo "El salario semanal del obrero es de " . "$" . $salary;
-					}elseif ($hours>40) {
-						$extra = 40-$extra;
+						echo "El salario semanal del obrero es de " . "$" . $salary . "<br>";
+					} //var_dump($extra);
+					if ($hours==40 && $extra>0) {
 						$salary = ($hours*16)+($extra*20);
-						echo "El salario semanal del obrero es de " . "$" . $salary;
+						echo "El salario semanal del obrero con $extra horas extra es de " . "$" . $salary . "<br>";
 					}
 				}
 
