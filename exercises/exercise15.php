@@ -35,7 +35,7 @@
 				$salary;
 				$errors = array();
 
-				if (empty($_POST['hours'])) {
+				if (empty($_POST['hours']) || $extra==NULL) {
 					echo "No se aceptan campos vacíos, por favor completar todos los campos.";
 				}elseif (is_numeric($hours)==FALSE || is_numeric($extra)==FALSE) {
 					if (is_numeric($hours)==FALSE) {
@@ -55,7 +55,7 @@
 				}else{
 					if ($hours<=40) {
 						$salary = $hours*16;
-						echo "El salario semanal del obrero es de " . "$" . $salary . "<br>";
+						echo "El salario semanal del obrero con $hours horas es de " . "$" . $salary . "<br>";
 					} //var_dump($extra);
 					if ($hours==40 && $extra>0) {
 						$salary = ($hours*16)+($extra*20);
