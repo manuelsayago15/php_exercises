@@ -30,7 +30,8 @@
 
 			//Cuando ejecutamos la consulta (llamar a la función), por debajo se crea una especie de tabla virtual en memoria que tiene cada uno de los registros en la consulta que estamos haciendo. La sentencia SQL lo que nos devuelve es la información de esa tabla virtual, en este caso devuelve los 4 campos de la tabla y sus registros. Con la función mysqli_fetch_row lo que hace es traer cada fila de esa tabla virtual que tenemos en memoria, por eso las palabras fetch de traer/buscar y row de fila. 
 
-			//Cuando se escribe dicha función, ella te pide el parámetro "resource" que viene siendo la $variable resultado porque allí es dónde ejecutamos la consulta y si nos fijamos, sus parámetros son el de la conexión de la BBDD y la sentencia de la consulta. Esta función lo que hace es ir viendo fila a fila lo que hay almacenado en la tabla virtual y lo guarda en un array, es decir, fila viene siendo un array que guarda la función fetch y lo que hay almacenado en el resource ($result)
+			//Cuando se escribe dicha función, ella te pide el parámetro "resource" que viene siendo la $variable resultado porque allí es dónde ejecutamos la consulta y si nos fijamos, sus parámetros son el de la conexión de la BBDD y la sentencia de la consulta. Esta función lo que hace es ir viendo fila a fila lo que hay almacenado en la tabla virtual y lo guarda en un array, es decir, fila viene siendo un array que guarda la función fetch y lo que hay almacenado en el result_set ($result)
+			//**** https://en.wikipedia.org/wiki/Result_set ***
 			$fila = mysqli_fetch_row($result);
 			$fila2 = mysqli_fetch_row($result);
 			//Aquí lo que hacemos es preguntarle al array qué es lo que tiene almacenado según la posición
