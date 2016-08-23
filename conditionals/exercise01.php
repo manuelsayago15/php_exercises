@@ -28,7 +28,7 @@
 				}elseif ($valor>100) {
 					echo "EL número $valor es mayor a 100.";
 				}else{
-					echo "El número $valor no es mayor a 100.";
+					echo "El número $valor es igual a 100.";
 				}
 			}
 		?>
