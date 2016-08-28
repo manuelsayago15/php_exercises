@@ -35,13 +35,13 @@
 				$salary;
 				$errors = array();
 
-				if (empty($_POST['hours']) || $extra==NULL) {
+				if (empty($_POST['hours']) || $extra==NULL) { //Aquí puse NULL porque la función empty toma el 0 como vacío.
 					echo "No se aceptan campos vacíos, por favor completar todos los campos.";
 				}elseif (is_numeric($hours)==FALSE || is_numeric($extra)==FALSE) {
 					if (is_numeric($hours)==FALSE) {
 						echo "Error! El campo de horas no puede tener letras." . "<br>";
 					}
-					if (is_numeric($extra)==TRUE) {
+					if (is_numeric($extra)==FALSE) {
 						echo "Error! El campo de horas extra no puede tener letras." . "<br>";
 					}
 					//var_dump($hours);

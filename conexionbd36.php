@@ -17,7 +17,7 @@
 			//Creo la variable para el usuario de la BBDD
 			$db_usuario = "root";
 			//Creo la variable para la contraseña de la BBDD
-			$db_contra = "";
+			$db_contra = "02125646334**";
 
 			//La variable para la conexión a la BBDD. La función mysqli_connect pide una serie de parámetros y el primero es la dirección de la BBDD ($db_host), el usuario de la BBDD ($db_usuario), luego pide la contraseña ($db_contra) y por último pide el nombre de la BBDD ($db_name). Con esto ya hacemos conexión con la BBDD. ("La función te abre la conexión a la BBDD y la variable guarda la información necesaria de la conexión, con esa info en la variable podes continuar con tu consulta")
 			$conexion = mysqli_connect($db_host, $db_usuario, $db_contra, $db_name);
