@@ -53,7 +53,7 @@
 			$grade2 = $_POST['grade2'];
 			$grade3 = $_POST['grade3'];
 			$count = 0;
-			$errors = array("Error1" => "Error! la nota $grade1 es incorrecta. Ingrese una nota 			válida entre 0-20.",
+			$errors = array("Error1" => "Error! la nota $grade1 es incorrecta. Ingrese una nota válida entre 0-20.",
 							"Error2" => "Error! la nota $grade2 es incorrecta. Ingrese una nota válida entre 0-20.",
 							"Error3" => "Error! la nota $grade3 es incorrecta. Ingrese una nota válida entre 0-20.");
 			
