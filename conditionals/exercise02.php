@@ -34,29 +34,41 @@
 				//Validaciones de los campos
 				//Aplico el preg_match de php para comprobar que sól sean letras y espacios. Esto aplica sólo para la variable $name porque se espera un valor string que no acepte números
 				$patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ\s]+$/";
-				if (empty($name)) {
-					echo "El campo no puede estar vacío, ingrese un nombre." . "<br>";
-				}else{
-					if (preg_match($patron_texto, $_POST['name'])) {
-						echo "Su nombre es: " . $_POST['name'] . "<br>";
-					}else{
-						echo "El campo nombre sólo puede contener letras y espacios" . "<br>";
+				if (empty($name) && empty($age)) {
+					echo "Los campos no pueden estar vacíos!" . "<br>";
+				}elseif (empty($name) || empty($age)) {
+					if (empty($name)) {
+						echo "El campo no puede estar vacío, ingrese un nombre.";
+					}
+					if (empty($age)) {
+						echo "El campo no puede estar vacío, ingrese su edad.";
+					}
+				}
+				if (!empty($name) && !empty($age)) {
+					if (!empty($name)) {
+						if (preg_match($patron_texto, $_POST['name'])) {
+							echo "Su nombre es: " . $_POST['name'] . "<br>";
+							$a = 1;
+						}else{
+							echo "El campo nombre sólo puede contener letras y espacios" . "<br>";
+						}
+					}
+					if (!empty($age)) {
+						if (is_numeric($age)==true){
+							if ($age>=18 && $age<=100){
+								echo "Su edad es: " . $age . "<br>";
+								$b = 1;
+							}else {
+								echo "La edad debe ser entre 18 y 100.";
+							}
+						}else {
+							echo "El campo debe contener sólo números. Ingrese su edad en números.";
+						}
 					}
 				}
 
-				if (empty($age)) {
-					echo "El campo no puede estar vacío, ingrese su edad.";
-				}else{
-					if (is_numeric($age)==false){
-						echo "El campo debe contener sólo números. Ingrese su edad en números.";
-					}elseif ($age>=18 || $age<=100){
-						echo "Su edad es: " . $age . "<br>";
-						echo "Usuario Registrado!" . "<br>";
-					}else{
-						echo "La edad debe ser entre 18 y 100.";
-					}
-				
-					$conexion = mysqli_connect($host, $user, $pass);
+				if ($a == 1 && $b == 1) {
+					$conexion = mysqli_connect($host, $user, $pass, $db_name);
 
 					if (mysqli_connect_errno()) {
 						echo "Error al conectar con la Base de Datos";
@@ -66,16 +78,28 @@
 
 					mysqli_set_charset($conexion, "utf-8");
 
-					$query = "SELECT * FROM usuarios";
+					$sql = "INSERT INTO usuarios (id, nombre, edad) VALUES (null, '$name', $age)";
 
-					$result = mysqli_query($conexion, $query);
+					//$result2 = mysqli_query($conexion, $sql);
 
-					$fila = mysqli_fetch_row($result);
+					if (mysqli_query($conexion, $sql)) {
+					    echo "New record created successfully!" . "<br>";
+						echo "Usuario Registrado!" . "<br>";
+					}else {
+					    echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+					}
+					
+					$query = "SELECT nombre FROM usuarios WHERE nombre = '$name' && edad = '$age'";
 
-					echo "Registros de la BD agregados por consola:" . "<br>";
-					echo $fila[0] . "<br>";
-					echo $fila[1] . "<br>";
-					echo $fila[2] . "<br>";
+					$rs = mysqli_query($conexion, $query);
+					while($row = mysqli_fetch_array($rs)) {
+
+					   // Write the value of the column FirstName (which is now in the array $row)
+					  echo $row[0] . "<br />";
+					  //echo $row[1] . "<br />";
+					}
+
+					mysqli_close($conexion);
 				}
 			}
 
