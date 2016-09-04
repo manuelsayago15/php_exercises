@@ -7,7 +7,7 @@
 	<body>
 		<h2>PHP Exercises</h2>
 		<h3>Exercise 1</h3>
-		<p>1. Dado un número N, mostrar todos los números entre el rango de 1 a N.</p>
+		<p>3. Dado un número N, mostrar todos los números entre el rango de 1 a N.</p>
 		<form action="#" method="post" id="constant" name="constant">
 			<div>
 				<input type="text" name="number" placeholder="Enter a number" >
